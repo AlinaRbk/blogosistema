@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,13 +25,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('categories')->group(function() {
     Route::get('', 'App\Http\Controllers\CategoryController@index')->name('category.index');
-    Route::get('create', 'App\Http\Controllers\CategoryController@index')->name('category.create');
-    Route::post('store', 'App\Http\Controllers\CategoryController@index')->name('category.store');
+    Route::get('create', 'App\Http\Controllers\CategoryController@create')->name('category.create');
+    Route::post('store', 'App\Http\Controllers\CategoryController@store')->name('category.store');
+    Route::get('show/{category}', 'App\Http\Controllers\CategoryController@show')->name('category.show'); 
 
 });
 Route::prefix('posts')->group(function() {
     Route::get('', 'App\Http\Controllers\PostController@index')->name('post.index');
-    Route::get('create', 'App\Http\Controllers\PostController@index')->name('post.create');
-    Route::post('store', 'App\Http\Controllers\CPostController@index')->name('post.store');
+    Route::get('create', 'App\Http\Controllers\PostController@create')->name('post.create');
+    Route::post('store', 'App\Http\Controllers\PostController@store')->name('post.store');
 
 });
